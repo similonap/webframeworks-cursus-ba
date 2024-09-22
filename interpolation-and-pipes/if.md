@@ -1,4 +1,4 @@
-# \*ngIf
+# @if
 
 ### **Willekeurig getal**
 
@@ -11,7 +11,7 @@
   * Als het resultaat kleiner is dan 4 dan wordt een extra tekst getoond: “Dit resultaat is ondermaats”
   * Als het getal groter is dan 7 dan wordt een tekst getoond: “Mooie score !”
   * In de andere gevallen verschijnt er geen extra tekst
-  * Gebruik in deze oefening een \*ngIf directive
+  * Gebruik in deze oefening een @if block
 * Breid de oefening nadien uit zodat:
   * De eerste score pas tevoorschijn komt na 2 seconden
   * In de tijd ervoor wordt er op het scherm helemaal niets weergegeven

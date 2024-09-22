@@ -1,11 +1,11 @@
-# \*ngFor
+# @for
 
 ### Het weer
 
 * Maak een nieuw component
 * Definieer een array van 5 getallen tussen 0 en 25 (graden celcius)
 * Geef deze weer in een tabel als weerinfo voor 5 vaste locaties: bv. Anchorage, Brussel, Osaka, Auckland & Kaapstad
-* Gebruik een \*ngFor
+* Gebruik een @for block
 * Breid uit zodat elke 2 seconden opnieuw al de getallen worden aangepast met willekeurige waarden
 * Maak een 2e kolom met extra info omtrent de voorspelling:
   * Indien de temperatuur == 0 graden : “Kans op gladheid”
@@ -52,6 +52,6 @@
   * Kolom 2: het getal zelf
 * Toon enkel de rijen waarvan het betreffende getal deelbaar is door 2
 * Toon de getallen die groter zijn dan 9 in vette tekst
-* gebruik in deze oefening een combinatie van **\*ngFor** en **\*ngIf**
+* gebruik in deze oefening een combinatie van @for en @if&#x20;
 
 ![](<../.gitbook/assets/Screenshot 2021-10-11 at 09.03.43 (1).png>)

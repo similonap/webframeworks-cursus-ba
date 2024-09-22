@@ -24,8 +24,8 @@
 ## Interpolation & Pipes
 
 * [Interpolation & pipes](interpolation-and-pipes/untitled.md)
-* [\*ngIf](interpolation-and-pipes/ngif.md)
-* [\*ngFor](interpolation-and-pipes/ngfor.md)
+* [@if](interpolation-and-pipes/if.md)
+* [@for](interpolation-and-pipes/for.md)
 
 ## Binding
 
