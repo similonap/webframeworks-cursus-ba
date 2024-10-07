@@ -12,8 +12,8 @@ Maak een component voor een “Todo” lijstje&#x20;
 * Indien er nog geen items in je lijst zitten , verschijnt er een tekst in de plaats
   * Je lijst is momenteel leeg’&#x20;
 * Je zal zeker nodig hebben:
-  * ngIf
-  * ngFor
+  * @If
+  * @for
   * Property binding&#x20;
   * Template reference variable
   * Event binding
