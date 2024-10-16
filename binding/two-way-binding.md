@@ -24,7 +24,7 @@ Pas het “welcome” scherm aan zodat er een keuzelijst (select) wordt getoond 
 
 Uiteraard blijven de afbeeldingen nog wel na 5 seconden wisselen en zal de keuzelijst steeds volgen en de huidige getoonde afbeelding weergeven.
 
-Bouw de keuzelijst op met een \*ngFor aan de hand van een lijst in de klasse
+Bouw de keuzelijst op met een @for aan de hand van een lijst in de klasse
 
 ![](../.gitbook/assets/welcome2.gif)
 
