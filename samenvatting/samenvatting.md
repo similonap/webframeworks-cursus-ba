@@ -1,14 +1,12 @@
-# Samenvatting
+# Samenva§tting
 
-## Angular Samenvatting
+## Project opzetten
 
-### Project opzetten
-
-#### Node.js LTS
+### Node.js LTS
 
 Vooraleer je Angular kan installeren, moet je Node.js installeren. Dit kan je doen door naar [deze link](https://nodejs.org/en/) te gaan en de LTS-versie te downloaden. De LTS versie is de versie die het meest stabiel is en het langst ondersteund wordt.
 
-#### Angular CLI
+### Angular CLI
 
 Angular CLI is een command line tool die je helpt bij het maken van Angular projecten. Je kan Angular CLI installeren door het volgende commando uit te voeren in je terminal:
 
@@ -22,7 +20,7 @@ Als je powershell gebruikt moet je vaak de uitvoeringsbeleid aanpassen om npm te
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
 ```
 
-#### Angular project aanmaken
+### Angular project aanmaken
 
 Om een nieuw Angular project aan te maken, kan je het volgende commando uitvoeren in je terminal:
 
@@ -37,7 +35,7 @@ Dit commando zal een nieuwe map aanmaken met de naam `project-naam` en hierin ee
 ? Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? no
 ```
 
-#### Angular project starten
+### Angular project starten
 
 Om je Angular project te starten, kan je het volgende commando uitvoeren in je terminal:
 
@@ -46,7 +44,7 @@ cd project-naam
 ng serve
 ```
 
-#### Bestandenstructuur
+### Bestandenstructuur
 
 Bij het aanmaken van een nieuw Angular project, zal Angular CLI een aantal bestanden en mappen aanmaken:
 
@@ -58,7 +56,7 @@ Bij het aanmaken van een nieuw Angular project, zal Angular CLI een aantal besta
 
 en er wordt altijd een `app.component` aangemaakt met bij behorende html, css en spec.ts bestanden. Dit is de root component van je Angular project.
 
-#### CSS Framework toevoegen
+### CSS Framework toevoegen
 
 De gemakkelijkste manier om een CSS framework toe te voegen aan je Angular project is door het framework te importeren in je `styles.css` bestand. Je kan bv de CDN van Bulma toevoegen aan je `styles.css` bestand:
 
@@ -81,7 +79,7 @@ En dan kan je deze toevoegen in je `angular.json` bestand:
 ],
 ```
 
-#### Font Awesome toevoegen
+### Font Awesome toevoegen
 
 Om Font Awesome toe te voegen aan je Angular project, kan je het volgende commando uitvoeren in je terminal:
 
@@ -104,7 +102,7 @@ En dan kan je de iconen gebruiken in je HTML bestanden:
 <i class="fa-solid fa-home"></i>
 ```
 
-#### Lodash toevoegen
+### Lodash toevoegen
 
 Om Lodash toe te voegen aan je Angular project, kan je het volgende commando uitvoeren in je terminal:
 
@@ -125,9 +123,9 @@ Als je bijvoorbeeld een random getal wilt genereren tussen 1 en 10, kan je het v
 const random = _.random(1, 10);
 ```
 
-### Basisconcepten
+## Basisconcepten
 
-#### App component
+### App component
 
 De app component is de root component van je Angular project. Deze component wordt automatisch aangemaakt bij het aanmaken van een nieuw Angular project. De app component bestaat uit een typescript bestand, een html bestand en een css bestand.
 
@@ -160,7 +158,7 @@ En dan kan je deze variabele tonen in je html bestand:
 <h1>{{ title }}</h1>
 ```
 
-#### Interpolatie
+### Interpolatie
 
 Interpolatie is een manier om data van je typescript bestand te tonen in je html bestand. Je kan dit doen door `{{ variabele }}` te schrijven in je html bestand. Telkens de field `title` in je typescript bestand verandert, zal de waarde in je html bestand ook veranderen. Je kan daar ook expressies gebruiken:
 
@@ -196,7 +194,7 @@ en in je html bestand:
 <h1>{{ titleUpperCase }}</h1>
 ```
 
-#### Componenten aanmaken
+### Componenten aanmaken
 
 Componenten zijn de bouwstenen van je Angular project. Een component bestaat uit een typescript bestand, een html bestand en een css bestand. Om een nieuwe component aan te maken, kan je het volgende commando uitvoeren in je terminal:
 
@@ -210,7 +208,7 @@ Dit commando zal een nieuwe map aanmaken met de naam `component-naam` en hierin 
 ng generate component mapnaam/component-naam
 ```
 
-#### Componenten gebruiken
+### Componenten gebruiken
 
 Om een component te gebruiken in de html van een andere component, kan je de selector van de component gebruiken. De selector is de naam van de component tussen haakjes. Als je bijvoorbeeld een component `header` hebt aangemaakt, kan je deze gebruiken in de html van de app component:
 
@@ -232,7 +230,7 @@ Je moet wel opletten dat je de component importeert in de module waarin je de co
 
 Als je de angular extension hebt geïnstalleerd in je editor, wordt dit over het algemeen automatisch gedaan.
 
-#### Code uitvoeren bij initialisatie
+### Code uitvoeren bij initialisatie
 
 Als je code wilt uitvoeren bij de initialisatie van een component, kan je de `ngOnInit` functie gebruiken. Deze functie wordt automatisch aangeroepen bij de initialisatie van de component. Wil je bijvoorbeeld een interval starten bij de initialisatie van de component, dan kan je het volgende in je typescript bestand schrijven:
 
@@ -248,7 +246,7 @@ ngOnInit(): void {
 
 Je zou dit in principe ook in de constructor kunnen doen, maar het is beter om dit in de `ngOnInit` functie te doen. Dit is omdat de `ngOnInit` functie pas wordt aangeroepen nadat de view is geïnitialiseerd.
 
-#### @for lus
+### @for lus
 
 Stel dat je een lijst van namen hebt en je wilt deze tonen in je html bestand, dan kan je een `@for` lus gebruiken. 
 
@@ -289,7 +287,7 @@ Je kan ook `$index` gebruiken om de index van de huidige iteratie te tonen:
 
 Er bestaan nog andere $-variabelen die je kan gebruiken zoals `$count`, `$first`, `$last`, `$even` en `$odd`. 
 
-#### @if statement
+### @if statement
 
 Stel dat je een variabele `show` hebt in je typescript bestand en je wilt een element tonen als `show` `true` is. 
 
@@ -325,7 +323,7 @@ of zelfs een `@else if` statement:
 }
 ```
 
-#### @switch statement
+### @switch statement
 
 Stel dat je een variabele `color` hebt in je typescript bestand en je wilt een element tonen afhankelijk van de waarde van `color`. 
 
@@ -352,7 +350,7 @@ dan kan je dit doen in je html bestand:
 }
 ```
 
-#### Pipes
+### Pipes
 
 Pipes zijn een manier om data te transformeren naar een gewenste vorm. Hier een aantal voorbeelden van interessante pipes:
 
@@ -382,9 +380,9 @@ import { UpperCasePipe, LowerCasePipe, DatePipe, CurrencyPipe, DecimalPipe } fro
 imports: [UpperCasePipe, LowerCasePipe, DatePipe, CurrencyPipe, DecimalPipe],
 ```
 
-### Binding
+## Binding
 
-#### Event binding
+### Event binding
 
 Event binding is een manier om events te koppelen aan functies in je typescript bestand. Je kan dit doen door `(event)="functie()"` te schrijven in je html bestand. Als je bijvoorbeeld een knop hebt en je wilt een functie `onClick` aanroepen als er op de knop wordt geklik, dan kan je het volgende in je html bestand schrijven:
 
@@ -418,7 +416,7 @@ handleInput(event: Event) {
 
 Je kan ook de `(change)` event gebruiken in plaats van de `(input)` event. Het verschil tussen de twee is dat de `(input)` event wordt aangeroepen telkens de waarde van het input element verandert, terwijl de `(change)` event wordt aangeroepen als de focus van het input element verandert.
 
-#### Property binding
+### Property binding
 
 Property binding is een manier om de waarde van een attribuut van een html element te binden aan een variabele in je typescript bestand. Je kan dit doen door `[attribuut]="variabele"` te schrijven in je html bestand. Zo kan je bijvoorbeeld de `innerText` van een `p` element binden aan een variabele `text` in je typescript bestand:
 
@@ -520,7 +518,7 @@ Nog een interessante property binding is de `[class]` binding. Hiermee kan je ee
 
 Als `isActive` `true` is, zal de class `active` worden toegevoegd aan het `div` element. Als `isActive` `false` is, zal de class `active` worden verwijderd van het `div` element.
 
-#### Template reference variables
+### Template reference variables
 
 Wil je een referentie naar een element in je html bestand, dan kan je een template reference variable gebruiken. Je kan dit doen door `#variabele` te schrijven in je html bestand. Als je bijvoorbeeld een input element hebt en je wilt een referentie naar dit element, dan kan je het volgende in je html bestand schrijven:
 
@@ -564,7 +562,7 @@ handleClick(value: number): void {
 }
 ```
 
-#### Two-way binding
+### Two-way binding
 
 Two-way binding is een manier om de waarde van een input element te binden aan een variabele in je typescript bestand. Als het input element verandert, zal de waarde van de variabele ook veranderen en omgekeerd. Je kan dit doen door `[(ngModel)]="variabele"` te schrijven in je html bestand. Je moet hier wel de `FormsModule` importeren in je component vooraleer je two-way binding kan gebruiken:
 
@@ -616,7 +614,7 @@ en dan kan je de `checked` variabele initialiseren in je typescript bestand:
 checked: boolean = true;
 ```
 
-### Parent-child component communicatie
+## Parent-child component communicatie
 
 Als je een variabele van een parent component wilt doorgeven aan een child component, kan je dit doen door een input property te gebruiken. Je kan dit doen door `@Input() variabele: type` te schrijven in de child component. Als je bijvoorbeeld een variabele `color` wil doorgeven aan een square component, kan je het volgende in de square component schrijven:
 
@@ -650,7 +648,7 @@ en dan kan je de user doorgeven in de parent component:
 <app-user [user]="user"></app-user>
 ```
 
-### Routing
+## Routing
 
 Als je routing wil gebruiken moet je in je `app.component.html` bestand een `router-outlet` toevoegen:
 
