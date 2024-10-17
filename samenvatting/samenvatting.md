@@ -648,4 +648,61 @@ en dan kan je de user doorgeven in de parent component:
 <app-user [user]="user"></app-user>
 ```
 
+#### Routing
 
+Als je routing wil gebruiken moet je in je `app.component.html` bestand een `router-outlet` toevoegen:
+
+```html
+<router-outlet></router-outlet>
+```
+
+Op deze plaats zullen de verschillende componenten getoond worden die je hebt gedefinieerd in je routing.
+
+Vervolgens moet je in je `app.routes.ts` bestand de verschillende routes definiëren:
+
+```typescript
+export const routes: Routes = [
+  { path: "home", component: HomeComponent },
+  { path: "counter", component: CounterComponent },
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "**", component: NotFoundComponent }
+];
+```
+
+De bovenstaande routes definiëren drie routes: `home`, `counter` en `not-found`. Als de gebruiker naar de root van de applicatie navigeert, zal hij worden doorgestuurd naar de `home` route. Als de gebruiker naar een route navigeert die niet bestaat, zal hij worden doorgestuurd naar de `not-found` route.
+
+Wil je links naar deze routes maken, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<a [routerLink]="['/home']">Home</a>
+<a [routerLink]="['/counter']">Counter</a>
+```
+
+om aan te geven dat een route actief is kan je de `routerLinkActive` directive gebruiken om een bepaalde class toe te voegen aan een element als de route actief is:
+
+```html
+<a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+<a [routerLink]="['/counter']" [routerLinkActive]="['active']">Counter</a>
+```
+
+Als de gebruiker op /home navigeert, zal de class `active` worden toegevoegd aan de `home` link. Als de gebruiker op /counter navigeert, zal de class `active` worden toegevoegd aan de `counter` link.
+
+Je kan ook dynamische routes definieren als je bijvoorbeeld een id wil meegeven:
+
+```typescript
+export const Routes = [
+  { path: "user/:id", component: UserComponent }
+];
+```
+
+en dan kan je de id uitlezen in je component:
+
+```typescript
+import { ActivatedRoute } from '@angular/router';
+
+constructor(private route: ActivatedRoute) {
+  this.route.params.subscribe(params => {
+    this.id = params['id'];
+  });
+}
+```
