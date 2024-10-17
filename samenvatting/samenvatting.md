@@ -331,3 +331,139 @@ dan kan je dit doen in je html bestand:
 }
 ```
 
+#### Event binding
+
+Event binding is een manier om events te koppelen aan functies in je typescript bestand. Je kan dit doen door `(event)="functie()"` te schrijven in je html bestand. Als je bijvoorbeeld een knop hebt en je wilt een functie `onClick` aanroepen als er op de knop wordt geklik, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<button (click)="handleClick()">Klik hier</button>
+```
+
+En dan kan je de `onClick` functie implementeren in je typescript bestand:
+
+```typescript
+handleClick(): void {
+  console.log('Klik');
+}
+```
+
+Wil je de waarde van een input element tonen op het scherm als de gebruiker typt, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<input type="text" (input)="handleInput($event)">
+```
+
+`$event` is een speciale variabele die de waarde van het event bevat. Je kan deze waarde doorgeven aan de `handleInput` functie in je typescript bestand:
+
+```typescript
+handleInput(event: Event) {
+  const inputElement = event.target as HTMLInputElement;
+  const value = inputElement.value;
+  console.log(value);
+}
+```
+
+Je kan ook de `(change)` event gebruiken in plaats van de `(input)` event. Het verschil tussen de twee is dat de `(input)` event wordt aangeroepen telkens de waarde van het input element verandert, terwijl de `(change)` event wordt aangeroepen als de focus van het input element verandert.
+
+#### Property binding
+
+Property binding is een manier om de waarde van een attribuut van een html element te binden aan een variabele in je typescript bestand. Je kan dit doen door `[attribuut]="variabele"` te schrijven in je html bestand. Zo kan je bijvoorbeeld de `innerText` van een `p` element binden aan een variabele `text` in je typescript bestand:
+
+```html
+<p [innerText]="text"></p>
+```
+
+En dan kan je de `text` variabele initialiseren in je typescript bestand:
+
+```typescript
+text: string = "Hello World";
+```
+
+Als je bijvoorbeeld de src van een afbeelding wilt binden aan een variabele in je typescript bestand, kan je het volgende in je html bestand schrijven:
+
+```html
+<img [src]="image">
+```
+
+En dan kan je de `image` variabele initialiseren in je typescript bestand:
+
+```typescript
+image: string = "https://via.placeholder.com/150";
+```
+
+Telkens de waarde van de `image` variabele verandert, zal de src van de afbeelding ook veranderen.
+
+Je kan ook de `style` van een element binden aan een variabele in je typescript bestand:
+
+```html
+<p [style.color]="color">Hello World</p>
+```
+
+En dan kan je de `color` variabele initialiseren in je typescript bestand:
+
+```typescript
+color: string = "red";
+```
+
+of bijvoorbeeld de `backgroundColor`:
+
+```html
+<p [style.backgroundColor]="backgroundColor">Hello World</p>
+```
+
+of de `src` van een link
+
+```html
+<a [href]="link">Link</a>
+```
+
+en je kan de `link` variabele initialiseren in je typescript bestand:
+
+```typescript
+link: string = "https://www.google.com";
+```
+
+of via een functie:
+
+```html
+<p [style.color]="getColor()">Hello World</p>
+```
+
+en in je typescript bestand:
+
+```typescript
+getColor(): string {
+  return "red";
+}
+```
+
+Vaak wordt hiervoor een getter gebruikt:
+
+```typescript
+get color(): string {
+  return "red";
+}
+```
+
+Wil je een element disabled maken afhankelijk van een variabele in je typescript bestand, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<button [disabled]="disabled">Klik hier</button>
+```
+
+je kan dan een getter gebruiken in je typescript bestand:
+
+```typescript
+get disabled(): boolean {
+  return true;
+}
+```
+
+Nog een interessante property binding is de `[class]` binding. Hiermee kan je een class toevoegen aan een element afhankelijk van een variabele in je typescript bestand. Als je bijvoorbeeld een variabele `isActive` hebt in je typescript bestand en je wilt een class `active` toevoegen aan een `div` element als `isActive` `true` is, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<div [class.active]="isActive"></div>
+```
+
+Als `isActive` `true` is, zal de class `active` worden toegevoegd aan het `div` element. Als `isActive` `false` is, zal de class `active` worden verwijderd van het `div` element.
+
