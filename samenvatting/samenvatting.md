@@ -210,3 +210,124 @@ Je moet wel opletten dat je de component importeert in de module waarin je de co
 ```
 
 Als je de angular extension hebt geïnstalleerd in je editor, wordt dit over het algemeen automatisch gedaan.
+
+#### Code uitvoeren bij initialisatie
+
+Als je code wilt uitvoeren bij de initialisatie van een component, kan je de `ngOnInit` functie gebruiken. Deze functie wordt automatisch aangeroepen bij de initialisatie van de component. Wil je bijvoorbeeld een interval starten bij de initialisatie van de component, dan kan je het volgende in je typescript bestand schrijven:
+
+```typescript
+getal: number = 0;
+
+ngOnInit(): void {
+  setInterval(() => {
+    this.getal++;
+  }, 1000);
+}
+```
+
+Je zou dit in principe ook in de constructor kunnen doen, maar het is beter om dit in de `ngOnInit` functie te doen. Dit is omdat de `ngOnInit` functie pas wordt aangeroepen nadat de view is geïnitialiseerd.
+
+#### @for lus
+
+Stel dat je een lijst van namen hebt en je wilt deze tonen in je html bestand, dan kan je een `@for` lus gebruiken. 
+
+Stel dat je de volgende lijst van namen hebt in je typescript bestand:
+
+```typescript
+names: string[] = ['Alice', 'Bob', 'Charlie'];
+```
+
+dan kan je hier over itereren in je html bestand:
+
+```html
+<ul>
+  @for (name of names; track name) {
+    <li>{{ name }}</li>
+  }
+</ul>
+
+Je moet er voor zorgen dat de variabele die je gebruikt in de track statement uniek is in de lijst. In dit geval is dat `name`. Als je geen unieke variabele hebt kan je altijd $index gebruiken.
+
+```html
+<ul>
+  @for (name of names; track $index) {
+    <li>{{ name }}</li>
+  }
+</ul>
+```
+
+Je kan ook `$index` gebruiken om de index van de huidige iteratie te tonen:
+
+```html
+<ul>
+  @for (name of names; track $index) {
+    <li>{{ $index + 1 }}. {{ name }}</li>
+  }
+</ul>
+```
+
+Er bestaan nog andere $-variabelen die je kan gebruiken zoals `$count`, `$first`, `$last`, `$even` en `$odd`. 
+
+#### @if statement
+
+Stel dat je een variabele `show` hebt in je typescript bestand en je wilt een element tonen als `show` `true` is. 
+
+```typescript
+show: boolean = true;
+```
+
+dan kan je dit doen in je html bestand:
+
+```html
+@if (show) {
+  <p>Element wordt getoond</p>
+}
+```
+
+Je kan ook een `@else` statement toevoegen:
+
+```html
+@if (show) {
+  <p>Element wordt getoond</p>
+} @else {
+  <p>Element wordt niet getoond</p>
+}
+```
+
+of zelfs een `@else if` statement:
+
+```html
+@if (show) {
+  <p>Element wordt getoond</p>
+} @else if (!show) {
+  <p>Element wordt niet getoond</p>
+}
+```
+
+#### @switch statement
+
+Stel dat je een variabele `color` hebt in je typescript bestand en je wilt een element tonen afhankelijk van de waarde van `color`. 
+
+```typescript
+color: string = 'red';
+```
+
+dan kan je dit doen in je html bestand:
+
+```html
+@switch (color) {
+    @case ('red') {
+      <p style="color: red;">Rood</p>
+    }
+    @case ('green') {
+      <p style="color: green;">Groen</p>
+    }
+    @case ('blue') {
+      <p style="color: blue;">Blauw</p>
+    }
+    @default {
+      <p>Geen kleur</p>
+    }
+}
+```
+
