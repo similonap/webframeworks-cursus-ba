@@ -61,3 +61,7 @@
 ## Opdrachten
 
 * [Twitter](opdrachten/twitter.md)
+
+## Samenvatting
+
+* [Samenvatting](samenvatting/samenvatting.md)
