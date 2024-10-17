@@ -331,6 +331,26 @@ dan kan je dit doen in je html bestand:
 }
 ```
 
+#### Pipes
+
+Pipes zijn een manier om data te transformeren naar een gewenste vorm. Hier een aantal voorbeelden van interessante pipes:
+
+* `uppercase`: Om een string in hoofdletters te tonen. Je moet dan de UpperCasePipe importeren in je typescript bestand.
+* `lowercase`: Om een string in kleine letters te tonen. Je moet dan de LowerCasePipe importeren in je typescript bestand.
+* `date`: Om een datum te tonen in een bepaald formaat. Je moet dan de DatePipe importeren in je typescript bestand.
+* `currency`: Om een getal te tonen in een bepaald formaat. Je moet dan de CurrencyPipe importeren in je typescript bestand.
+* `number`: Om een getal te tonen in een bepaald formaat. Je moet dan de DecimalPipe importeren in je typescript bestand.
+
+Je kan deze pipes gebruiken in je html bestand:
+
+```html
+<p>{{ title | uppercase }}</p>
+<p>{{ title | lowercase }}</p>
+<p>{{ date | date: 'dd/MM/yyyy' }}</p>
+<p>{{ price | currency: 'EUR' }}</p>
+<p>{{ number | number: '1.2-2' }}</p>
+```
+
 #### Event binding
 
 Event binding is een manier om events te koppelen aan functies in je typescript bestand. Je kan dit doen door `(event)="functie()"` te schrijven in je html bestand. Als je bijvoorbeeld een knop hebt en je wilt een functie `onClick` aanroepen als er op de knop wordt geklik, dan kan je het volgende in je html bestand schrijven:
@@ -467,3 +487,121 @@ Nog een interessante property binding is de `[class]` binding. Hiermee kan je ee
 
 Als `isActive` `true` is, zal de class `active` worden toegevoegd aan het `div` element. Als `isActive` `false` is, zal de class `active` worden verwijderd van het `div` element.
 
+#### Template reference variables
+
+Wil je een referentie naar een element in je html bestand, dan kan je een template reference variable gebruiken. Je kan dit doen door `#variabele` te schrijven in je html bestand. Als je bijvoorbeeld een input element hebt en je wilt een referentie naar dit element, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<input type="text" #inputElement/>
+```
+
+Wil je dan ergens in je html bestand de waarde van het input element gebruiken, bv bij het klikken op een knop, dan kan je het volgende schrijven:
+
+```html
+<button (click)="handleClick(inputElement.value)">Klik hier</button>
+```
+
+en dan kan je de `handleClick` functie implementeren in je typescript bestand:
+
+```typescript
+handleClick(value: string): void {
+  console.log(value);
+}
+```
+
+Bij een number input kan je de value ook casten naar een number:
+
+```typescript
+handleClick(value: string): void {
+  console.log(Number(value));
+}
+```
+
+Dit kan je ook doen door eerst een + voor de variabele te zetten:
+
+```html
+<button (click)="handleClick(+inputElement.value)">Klik hier</button>
+```
+
+en dan kan je de `handleClick` functie implementeren in je typescript bestand:
+
+```typescript
+handleClick(value: number): void {
+  console.log(value);
+}
+```
+
+#### Two-way binding
+
+Two-way binding is een manier om de waarde van een input element te binden aan een variabele in je typescript bestand. Als het input element verandert, zal de waarde van de variabele ook veranderen en omgekeerd. Je kan dit doen door `[(ngModel)]="variabele"` te schrijven in je html bestand. Je moet hier wel de `FormsModule` importeren in je component vooraleer je two-way binding kan gebruiken:
+
+```typescript
+imports: [FormsModule],
+```
+
+Als je bijvoorbeeld een input element hebt en je wilt de waarde van het input element binden aan een variabele `name` in je typescript bestand, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<input type="text" [(ngModel)]="name">
+```
+
+En dan kan je de `name` variabele initialiseren in je typescript bestand:
+
+```typescript
+name: string = "Alice";
+```
+
+Als je nu de waarde van het input element verandert, zal de waarde van de `name` variabele ook veranderen en omgekeerd.
+
+Je kan ook een `select` element gebruiken met two-way binding:
+
+```html
+<select [(ngModel)]="selected">
+  <option value="1">Optie 1</option>
+  <option value="2">Optie 2</option>
+  <option value="3">Optie 3</option>
+</select>
+```
+
+en dan kan je de `selected` variabele initialiseren in je typescript bestand:
+
+```typescript
+selected: string = "1";
+```
+
+Zorg er wel voor dat de waarden van de `option` elementen overeenkomen met de waarden van de `selected` variabele.
+
+Een ander voorbeeld is een `checkbox` element:
+
+```html
+<input type="checkbox" [(ngModel)]="checked">
+```
+
+en dan kan je de `checked` variabele initialiseren in je typescript bestand:
+
+```typescript
+checked: boolean = true;
+```
+
+#### Parent-child component communicatie
+
+Als je een variabele van een parent component wilt doorgeven aan een child component, kan je dit doen door een input property te gebruiken. Je kan dit doen door `@Input() variabele: type` te schrijven in de child component. Als je bijvoorbeeld een variabele `color` wil doorgeven aan een square component, kan je het volgende in de square component schrijven:
+
+```typescript
+@Input() color: string;
+```
+
+De html van de square component kan er dan als volgt uitzien:
+
+```html
+<div [style.backgroundColor]="color" style="width: 100px; height: 100px;"></div>
+```
+
+En dan kan je de `color` variabele doorgeven in de parent component:
+
+```html
+<app-square [color]="color"></app-square>
+```
+
+De waarde van @Input wordt pas doorgegeven als de component geïnitialiseerd is. Je kan dus pas in de `ngOnInit` functie van de child component de waarde van de input property gebruiken.
+De waarde van @Input wordt pas doorgegeven als de component geïnitialiseerd is. Je kan dus pas in de `ngOnInit` functie van de child component de waarde van de input property gebruiken.
