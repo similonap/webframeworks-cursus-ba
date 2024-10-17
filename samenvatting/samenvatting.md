@@ -382,6 +382,8 @@ import { UpperCasePipe, LowerCasePipe, DatePipe, CurrencyPipe, DecimalPipe } fro
 imports: [UpperCasePipe, LowerCasePipe, DatePipe, CurrencyPipe, DecimalPipe],
 ```
 
+### Binding
+
 #### Event binding
 
 Event binding is een manier om events te koppelen aan functies in je typescript bestand. Je kan dit doen door `(event)="functie()"` te schrijven in je html bestand. Als je bijvoorbeeld een knop hebt en je wilt een functie `onClick` aanroepen als er op de knop wordt geklik, dan kan je het volgende in je html bestand schrijven:
@@ -614,7 +616,7 @@ en dan kan je de `checked` variabele initialiseren in je typescript bestand:
 checked: boolean = true;
 ```
 
-#### Parent-child component communicatie
+### Parent-child component communicatie
 
 Als je een variabele van een parent component wilt doorgeven aan een child component, kan je dit doen door een input property te gebruiken. Je kan dit doen door `@Input() variabele: type` te schrijven in de child component. Als je bijvoorbeeld een variabele `color` wil doorgeven aan een square component, kan je het volgende in de square component schrijven:
 
@@ -648,7 +650,7 @@ en dan kan je de user doorgeven in de parent component:
 <app-user [user]="user"></app-user>
 ```
 
-#### Routing
+### Routing
 
 Als je routing wil gebruiken moet je in je `app.component.html` bestand een `router-outlet` toevoegen:
 
