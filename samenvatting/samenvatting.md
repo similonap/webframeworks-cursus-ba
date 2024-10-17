@@ -104,6 +104,27 @@ En dan kan je de iconen gebruiken in je HTML bestanden:
 <i class="fa-solid fa-home"></i>
 ```
 
+#### Lodash toevoegen
+
+Om Lodash toe te voegen aan je Angular project, kan je het volgende commando uitvoeren in je terminal:
+
+```bash
+npm install lodash
+npm install --save-dev @types/lodash
+```
+
+En dan kan je Lodash importeren in je typescript bestanden:
+
+```typescript
+import * as _ from 'lodash';
+```
+
+Als je bijvoorbeeld een random getal wilt genereren tussen 1 en 10, kan je het volgende schrijven:
+
+```typescript
+const random = _.random(1, 10);
+```
+
 ### Basisconcepten
 
 #### App component
@@ -349,6 +370,16 @@ Je kan deze pipes gebruiken in je html bestand:
 <p>{{ date | date: 'dd/MM/yyyy' }}</p>
 <p>{{ price | currency: 'EUR' }}</p>
 <p>{{ number | number: '1.2-2' }}</p>
+```
+
+Vergeet dan niet de pipes te importeren in je typescript bestand:
+
+```typescript
+import { UpperCasePipe, LowerCasePipe, DatePipe, CurrencyPipe, DecimalPipe } from '@angular/common';
+```
+
+```typescript
+imports: [UpperCasePipe, LowerCasePipe, DatePipe, CurrencyPipe, DecimalPipe],
 ```
 
 #### Event binding
@@ -604,4 +635,17 @@ En dan kan je de `color` variabele doorgeven in de parent component:
 ```
 
 De waarde van @Input wordt pas doorgegeven als de component geïnitialiseerd is. Je kan dus pas in de `ngOnInit` functie van de child component de waarde van de input property gebruiken.
-De waarde van @Input wordt pas doorgegeven als de component geïnitialiseerd is. Je kan dus pas in de `ngOnInit` functie van de child component de waarde van de input property gebruiken.
+
+Je kan ook volledige objecten doorgeven:
+
+```typescript
+@Input() user: User;
+```
+
+en dan kan je de user doorgeven in de parent component:
+
+```html
+<app-user [user]="user"></app-user>
+```
+
+
