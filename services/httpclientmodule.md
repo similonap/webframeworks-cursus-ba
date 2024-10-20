@@ -78,9 +78,12 @@ Je hebt voor deze API een subscription key nodig. Je kan deze toevoegen als twee
 ### Uitbreiding De **Lijn**
 
 * Maak een zoekbalk waarmee je een gemeente kan opzoeken
-  * ServiceURL: [https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten](https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten)
+  * Documentatie: [https://portal.delijn.be/api-details#api=KernOpenDataServicesV1\&operation=get-gemeenten](https://portal.delijn.be/api-details#api=KernOpenDataServicesV1\&operation=get-gemeenten)
+  * ServiceURL: [https://api.delijn.be/DLKernOpenData/api/v1/gemeenten](https://api.delijn.be/DLKernOpenData/api/v1/gemeenten)
 * Als je een gemeente aanduid krijg je alle haltes te zien in een dropdown
-  * ServiceURL: [https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten/${id}/haltes](https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten/$%7Bid%7D/haltes)
+  * Documentatie:\
+    [https://portal.delijn.be/api-details#api=KernOpenDataServicesV1\&operation=get-gemeenten-gemeentenummer-haltes](https://portal.delijn.be/api-details#api=KernOpenDataServicesV1\&operation=get-gemeenten-gemeentenummer-haltes)
+  * ServiceURl:[https://api.delijn.be/DLKernOpenData/api/v1/gemeenten/{gemeenteNummer}/haltes](https://api.delijn.be/DLKernOpenData/api/v1/gemeenten/%7BgemeenteNummer%7D/haltes)
 * Als je een gemeente aanduid krijg je het overzicht te zien van de doorkomsten
 * Op de moment dat je een gemeente aanduid krijg je ook icoontje te zien met het weer op die locatie
 * Gebruik overal  promises en async/await
