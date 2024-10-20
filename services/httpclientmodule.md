@@ -43,9 +43,10 @@ Je kan nu de API endpoints aanspreken via postman:
 ### De Lijn
 
 * Gebruik 'de lijn' API om een component te bouwen dat voor een bepaald halte nummer de vertrekken laat zien.
-*   **Service** [https://data.delijn.be/docs/services/KernOpenDataServicesV1/operations/geefDoorkomstenVoorHalte/console](https://data.delijn.be/docs/services/KernOpenDataServicesV1/operations/geefDoorkomstenVoorHalte/console)
 
-    Je hebt voor deze API een subscription key nodig. Je kan deze toevoegen als tweede parameter van je get:
+[**https://portal.delijn.be/api-details#api=KernOpenDataServicesV1\&operation=get-haltes-entiteitnummer-haltenummer-real-time**](https://portal.delijn.be/api-details#api=KernOpenDataServicesV1\&operation=get-haltes-entiteitnummer-haltenummer-real-time)
+
+Je hebt voor deze API een subscription key nodig. Je kan deze toevoegen als tweede parameter van je get:
 
 ```
 {headers: {"Ocp-Apim-Subscription-Key": "c789b014acc84b53adc4e3058d248e14"}
