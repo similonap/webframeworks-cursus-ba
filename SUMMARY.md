@@ -42,10 +42,6 @@
 
 * [Routing](routing/routing.md)
 
-## Modules
-
-* [Google Maps](modules/google-maps.md)
-
 ## Services
 
 * [Services](services/services.md)
