@@ -49,7 +49,7 @@ Je kan nu de API endpoints aanspreken via postman:
 Je hebt voor deze API een subscription key nodig. Je kan deze toevoegen als tweede parameter van je get:
 
 ```
-{headers: {"Ocp-Apim-Subscription-Key": "c789b014acc84b53adc4e3058d248e14"}
+{headers: {"Ocp-Apim-Subscription-Key": "c8b9e9e323a14845bd5acacbbc3545ae"}
 ```
 
 * Voorbeeld serviceURL: [https://api.delijn.be/DLKernOpenData/api/v1/haltes/1/200144/real-time](https://api.delijn.be/DLKernOpenData/api/v1/haltes/1/200144/real-time)
