@@ -18,17 +18,17 @@ Filter een string\[ ], Gebruik hiervoor de methode Array.filter
 
 Sorteer een string\[ ], gebruik hiervoor de methode Array.sort
 
-* Zodanig dat er gesorteerd wordt op lengte van de tekst opwaards
-* Zodanig dat er gesorteerd wordt op lengte van de tekst neerwaards&#x20;
+* Zodanig dat er gesorteerd wordt op lengte van de tekst opwaarts
+* Zodanig dat er gesorteerd wordt op lengte van de tekst neerwaarts&#x20;
 
 Sorteer een number\[ ], gebruik hiervoor de methode Array.sort
 
-* Bekijk eerst of deze methode correct werkt zonder gebruik te maken van een callback functie
+* Bekijk eerst hoe deze methode werkt zonder gebruik te maken van een callback functie
 * Zorg dat de methode werkt met gebruik van een callback functie
 
 ```
 [ 'Sven', 'Andie', 'Kelly', 'Nabil', 'Silke', 'Muhammed' ]
 [ 'Muhammed', 'Andie', 'Kelly', 'Nabil', 'Silke', 'Sven' ]
-[ 1, 2, 4, 49, 99 ]
-[ 1, 2, 4, 49, 99 ]
+[ 1, 2, 49, 5, 99 ]
+[ 1, 2, 5, 49, 99 ]
 ```

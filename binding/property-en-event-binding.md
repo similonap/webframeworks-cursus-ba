@@ -53,6 +53,6 @@ Maak een calculator component
 * Deze bevat de standaard bewerkingen: +, - , \*, /&#x20;
 * Deze bevat een = toets om het resultaat te bekomen
 * Gebruik de ‘mathjs’ library om de expressie uit te rekenen
-* Genereer de toetsen op een creatieve manier (ngFor,..)
+* Genereer de toetsen op een creatieve manier (@for,..)
 
 ![](<../.gitbook/assets/Screenshot 2021-10-14 at 21.51.56.png>)

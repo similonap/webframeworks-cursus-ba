@@ -40,7 +40,7 @@ Gebruik de Counter Component uit de vorige oefeningen (met de button) en geef de
   * Twee buttons.&#x20;
     * 1 button zorgt ervoor dat de TextComponent getoond wordt
     * 1 button zorgt ervoor dat de TextComponent verborgen wordt
-    * Gebruik hiervoor ngIf
+    * Gebruik hiervoor @If
 * Merk op wat er gebeurd met de text die je in de input field hebt ingegeven.
 
 ![](../.gitbook/assets/toggleservice.gif)
