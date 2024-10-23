@@ -22,3 +22,32 @@ Maak twee componenten:
 * Zorg ervoor dat je vanuit de parent de volgende dingen kan instellen:
   * Title (default: todo lijstje)
   * Max. aantal items in delijst (standaard 0, dwz onbeperkt!)
+
+## Sensors
+
+Maak een array van sensoren met de volgende waarden:
+- Living Room: 23°C, 40% humidity
+- Bedroom: 21°C, 50% humidity
+- Kitchen: 25°C, 45% humidity
+
+Je kan hiervoor de volgende interface gebruiken om de objecten te beschrijven:
+
+```typescript
+export interface Sensor {
+  name: string;
+  temperature: number;
+  humidity: number;
+}
+```
+
+Zorg ervoor dat de data van de sensoren om de 5 seconden geüpdatet wordt met willekeurige waarden. Gebruik hiervoor de lodash library.
+
+Maak een nieuw component `SensorComponent` die de data van de sensor toont. Gebruik een `@Input` om de sensor door te geven aan het component.
+
+![alt text](sensor.png)
+
+Gebruik een `@for` loop om de sensoren te tonen in de `AppComponent`.
+
+Voeg vervolgens een twee invoer velden toe waarbij de gebruiker een range kan instellen voor de temperatuur en de luchtvochtigheid. Als de temperatuur of luchtvochtigheid van een sensor boven de ingestelde waarde komt, moet de achtergrond van de sensor geel worden en de tekst van de desbetreffende sensor rood. Je moet deze waarden doorgeven aan de `SensorComponent` via een `@Input`.
+
+![alt text](sensors.png)
