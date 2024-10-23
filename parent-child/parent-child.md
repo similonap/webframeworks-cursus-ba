@@ -50,4 +50,4 @@ Gebruik een `@for` loop om de sensoren te tonen in de `AppComponent`.
 
 Voeg vervolgens een twee invoer velden toe waarbij de gebruiker een range kan instellen voor de temperatuur en de luchtvochtigheid. Als de temperatuur of luchtvochtigheid van een sensor boven de ingestelde waarde komt, moet de achtergrond van de sensor geel worden en de tekst van de desbetreffende sensor rood. Je moet deze waarden doorgeven aan de `SensorComponent` via een `@Input`.
 
-![alt text](sensors.png)
+![alt text](sensors.gif)
