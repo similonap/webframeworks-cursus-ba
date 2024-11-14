@@ -1,26 +1,16 @@
 # Nest.js
 
-In dit labo gaan we werken met nest.js. Dit is een framework voor het maken van een backend. Nest.js is gebouwd bovenop Express. Het gelijkt conceptueel heel hard op Angular.
+In de theorie hebben we gezien hoe we een API kunnen bouwen aan het hand van het Nest.js framework. Hieronder vind je enkele oefeningen hieromtrent. We gebruiken op dit moment nog geen databank, maar halen de data uit een JSON bestand. Dit bestand kan je inlezen in het Nest project met het `import` statement. &#x20;
 
-Je kan de documentatie vinden op [https://docs.nestjs.com/](https://docs.nestjs.com/)
+## 1. Pokemon API
 
-Je mag alle opdrachten maken in hetzelfde nest.js project.
+###
 
-## 1. Pokemon Controller
-
-### Service
-
-Maak een service aan de hand van de nest.js cli. Deze service moet de volgende methodes bevatten:
-
-* getAllPokemon()
-* getPokemonById(id)
-* createPokemon(pokemon)
-* updatePokemon(id, pokemon)
-* deletePokemon(id)
+Maak een nieuwe Nest.js applicatie aan voor de Pokemon API via de Nest CLI. Noem deze bv. Pokemon-API.
 
 ### Controller
 
-Maak een controller aan met de naam pokemon. Deze controller moet de volgende endpoints bevatten:
+Maak een controller aan met de naam Pokemon. Deze controller moet de volgende endpoints bevatten:
 
 * GET /pokemon
   * Deze endpoint geeft alle pokemon terug in een JSON array
@@ -33,7 +23,11 @@ Maak een controller aan met de naam pokemon. Deze controller moet de volgende en
 * DELETE /pokemon/:id
   * Deze endpoint verwijdert een pokemon met het meegegeven id.
 
-Deze endpoints moeten de juiste methodes van de service aanroepen.
+Voorzie de nodige code in de overeenkomstige methodes om de endpoints volledig werkend te maken.
+
+{% hint style="info" %}
+We werken hier enkel met een controller klasse. In principe kan je in Nest.js ook gebruik maken van Service klassen (net zoals bij Angular). Als je meer wil weten hieromtrent kan je steeds terecht in de Nest.js documentatie online.&#x20;
+{% endhint %}
 
 ### Error handling
 
@@ -43,51 +37,20 @@ Als een pokemon niet gevonden wordt met een bepaald id, moet je een 404 error te
 
 Zorg ervoor dat de frontend vanaf nu de zelfgemaakte backend gebruikt in plaats van de json-server.
 
-Krijg je de volgende error:
-
-<figure><img src="../.gitbook/assets/Screenshot 2022-12-05 at 14.24.10.png" alt=""><figcaption></figcaption></figure>
-
-voeg dan&#x20;
-
-```
-app.enableCors();
-```
-
-toe in je main.ts bestand in je Nest.js server.
+Vermits je Frontend (Angular) en backend (API) elk op een aparte TCP poort werken, krijg je waarschijnlijk te maken met CORS foutmeldingen. Zie de cursus hoe je dit kan oplossen.
 
 ## 2. Steam API <a href="#steam-api" id="steam-api"></a>
 
-Maak een nieuwe nest js applicatie aan met de naam steam-api. Je kan hier het volgende commando voor gebruiken:
+Maak een nieuwe nest js applicatie aan met de naam steam-api.&#x20;
 
-```
-npx nest new steam-api
-```
+### Opdracht
 
-### Opdracht <a href="#opdracht" id="opdracht"></a>
+Maak een Steam API die toegang geeft tot enerzijds Games en anderzijds Genres. Voor de  data maak je gebruik van de `steam.json` file. Deze file bevat een lijst met games en genres. De service moet de volgende methodes bevatten:
 
-Maak een Steam service aan die toegang waar je gebruik maakt van de `steam.json` file. Deze file bevat een lijst met games en genres. De service moet de volgende methodes bevatten:
-
-* Een getter die alle games teruggeeft
-* Een getter die alle genres teruggeeft
-* Een getter die een game teruggeeft op basis van de id
-* Een getter die een genre teruggeeft op basis van de id
-
-Een service kan je aanmaken met het volgende commando:
-
-```
-npx nest g service steam
-```
-
-Vervolgens maak je een GamesController aan die de volgende endpoints heeft:
+Maak een GamesController aan die de volgende endpoints heeft:
 
 * Een GET endpoint die alle games teruggeeft (/games)
 * Een GET endpoint die een game teruggeeft op basis van de id (/games/:id)
-
-Een controller kan je aanmaken met het volgende commando:
-
-```
-npx nest g controller games
-```
 
 Vervolgens maak je een GenresController aan die de volgende endpoints heeft:
 
@@ -96,12 +59,6 @@ Vervolgens maak je een GenresController aan die de volgende endpoints heeft:
 * Een GET endpoint die alle games teruggeeft die bij een genre horen (/genres/:id/games)
 
 Als de game of genre niet gevonden kan worden moet je een 404 teruggeven met een gepaste error message.
-
-Je kan de nest applicatie starten met het volgende commando:
-
-```
-npm run start:dev
-```
 
 Probeer je API uit met Postman.
 
