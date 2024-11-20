@@ -2,8 +2,8 @@
 
 ### Pokemon
 
-* Maak een nieuwe database met bijbehorende collection Pokemon aan via [https://cloud.mongodb.com/](https://cloud.mongodb.com/)
-* Pas je nest applicatie aan zodat ze verbinding maakt met de mongodb database. In principe hoef je enkel de service aan te passen.
+* Maak een nieuwe database met bijbehorende collection Pokemon aan in je lokaal geïnstalleerde MongoDB.
+* Pas je nest applicatie aan zodat ze verbinding maakt met de mongodb database.&#x20;
 * Zorg ervoor dat de collection wordt gevuld met pokemon uit het json bestand als deze leeg is.
 * Pas alle routes aan (GET,POST,DELETE en PUT) zodat ze gebruik maken van de mongodb database
 * Je hebt dus de routes
