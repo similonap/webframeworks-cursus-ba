@@ -923,3 +923,48 @@ Vervolgens kan je JSON server starten met het volgende commando:
 ```bash
 json-server staff.json
 ```
+
+## HttpClient en API calls
+
+Als je data wilt ophalen van een externe API, kan je de `HttpClient` module van Angular gebruiken. Je moet nog wel `provideHttpClient()` toevoegen aan je `app.config.ts` bestand:
+
+```typescript
+import { provideHttpClient } from '@angular/common/http';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes, withComponentInputBinding()), provideHttpClient()]
+};
+```
+
+Vervolgens kan je de `HttpClient` module injecteren in de constructor van de service:
+
+```typescript
+constructor(private client: HttpClient) {}
+```
+
+en dan kan je een API call maken in de service:
+
+```typescript
+getStaff() {
+  return this.client.get<Staff[]>("http://localhost:3000/staff");
+}
+```
+
+en dan kan je deze methode aanroepen in de component. Bijvoorbeeld in de `ngOnInit` functie:
+
+```typescript
+ngOnInit(): void {
+  this.staffService.getStaff().subscribe(staff => {
+    // doe iets met de data
+  });
+}
+```
+
+Je kan ook `async` en `await` gebruiken om de data op te halen:
+
+```typescript
+async ngOnInit() {
+  const staff = await firstValueFrom(this.staffService.getStaff());
+  // doe iets met de data
+}
+```
