@@ -648,6 +648,7 @@ en dan kan je de user doorgeven in de parent component:
 <app-user [user]="user"></app-user>
 ```
 
+
 ## Routing
 
 Als je routing wil gebruiken moet je in je `app.component.html` bestand een `router-outlet` toevoegen:
@@ -695,14 +696,230 @@ export const Routes = [
 ];
 ```
 
-en dan kan je de id uitlezen in je component:
+en dan kan je de id uitlezen in je component aan de hand van `@Input` parameters. Je moet hier wel nog een wijziging aanbrengen in je `app.config.ts` bestand:
 
 ```typescript
-import { ActivatedRoute } from '@angular/router';
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes, withComponentInputBinding())]
+};
+```
 
-constructor(private route: ActivatedRoute) {
-  this.route.params.subscribe(params => {
-    this.id = params['id'];
-  });
+`withComponentInputBinding()` zorgt ervoor dat de id uit de url wordt doorgegeven aan de component.
+
+Je kan dan de id uitlezen in je component:
+
+```typescript
+@Input() id: string;
+```
+
+Wil je nu een link maken naar de `user` route met id `1`, dan kan je het volgende in je html bestand schrijven:
+
+```html
+<a [routerLink]="['/user', 1]">User 1</a>
+```
+
+of als je de id in een variabele hebt:
+
+```html
+<a [routerLink]="['/user', id]">User {{ id }}</a>
+```
+
+## Services
+
+Services zijn een manier om code te delen tussen verschillende componenten. Als je bijvoorbeeld een API wilt aanroepen in verschillende componenten of data wilt delen tussen verschillende componenten, kan je een service gebruiken. Om een service aan te maken, kan je het volgende commando uitvoeren in je terminal:
+
+```bash
+ng generate service service-naam
+```
+
+Dit commando zal een nieuwe service aanmaken met de naam `service-naam`. Je kan dan de service gebruiken in je componenten door de service te injecteren in de constructor van de component:
+
+```typescript
+constructor(private service: ServiceNaam) {}
+```
+
+Dit maakt een instantie van de service beschikbaar in de component. Je kan dan de methodes van de service aanroepen in de component.
+
+### lokaal JSON bestand inlezen in een service
+
+Als je data wil inlezen van een lokaal JSON bestand, kan je dit doen in een service. 
+
+Stel dat we het volgende JSON bestand hebben:
+
+```json
+[
+    {
+        "id": 0,
+        "name": "Andie Similon",
+        "age": 39,
+        "city": "Edegem"
+    },   
+    {
+        "id": 1,
+        "name": "Hans Verbeeck",
+        "age": 32,
+        "city": "Antwerp"
+    },
+    {
+        "id": 2,
+        "name": "Jon Beton",
+        "age": 22,
+        "city": "Veurne"
+    }
+]
+```
+
+en we hebben dit opgeslagen in een bestand `staff.json` in de `src` map van ons project.
+
+Het eerste wat we dan moeten doen is een nieuwe service aanmaken:
+
+```bash
+ng generate service staff
+```
+
+Vervolgens importeren we de json file in de ```staff.service.ts``` file:
+
+```typescript
+import staffJson from '../staff.json';
+```
+
+Zorg wel dat je het juiste path gebruikt naar het bestand. Dit is relatief ten opzichte van het bestand waarin je de import doet. In dit geval staat het bestand in een mapje boven de map waarin het bestand staat waarin je de import doet. 
+
+Voor alle data die je importeert uit een json bestand moet je een interface aanmaken.
+
+```typescript
+export interface Staff {
+  id: number;
+  name: string;
+  age: number;
+  city: string;
 }
+```
+
+Sla deze best op in een `types.ts` bestand in de `src` map.
+
+De service zal er dan ongeveer als volgt uitzien:
+
+```typescript
+import { Injectable } from '@angular/core';
+import staffJSON from "../staff.json";
+import { Staff } from '../types';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StaffService {
+
+  private _staff : Staff[] = staffJSON;
+
+  constructor() { }
+
+  get staff(): Staff[] {
+    return this._staff;
+  }
+}
+```
+
+We hebben hier een private variabele `_staff` die de data van het json bestand bevat. Deze data wordt ingelezen bij het initialiseren van de service. Vervolgens hebben we een getter `staff` die de data teruggeeft.
+
+Je kan deze service dan gebruiken in een component door de service te injecteren in de constructor van de component:
+
+```typescript
+constructor(public staffService: StaffService) {}
+```
+
+Omdat we de service publiek maken in de constructor wordt er automatisch een publiek veld voor aangemaakt dat beschikbaar is vanuit je html code:
+
+```typescript
+@for (staff of staffService.staff; track $index) {
+    <ul>{{staff.name}}</ul>
+}
+```
+
+Vaak wordt er in het component zelf ook nog een getter aangemaakt om de data op te halen:
+
+```typescript
+get staff(): Staff[] {
+  return this.staffService.staff;
+}
+```
+
+en dan kan je in je html bestand de data tonen:
+
+```html
+@for (staff of staff; track $index) {
+    <ul>{{staff.name}}</ul>
+}
+```
+
+Wil je data met een bepaalde id ophalen, dan kan je een methode toevoegen aan de service:
+
+```typescript
+getStaffById(id: number): Staff {
+  return this.staff.find(staff => staff.id === id);
+}
+```
+
+je kan deze rechstreeks in je html aanroepen via de service of je kan ook nog een getter aanmaken in je component zoals je hierboven hebt gezien.
+
+## JSON server
+
+JSON server is een eenvoudig te gebruiken tool om een REST API te maken van een JSON bestand. Om JSON server te installeren, kan je het volgende commando uitvoeren in je terminal:
+
+```bash
+npm install -g json-server
+```
+
+Om JSON server te starten, kan je het volgende commando uitvoeren in je terminal. De structuur moet er als volgt uitzien:
+
+```
+{
+  "endpoint1": [
+    {
+      "id": 1,
+      "key": "value"
+    },
+    ...
+  ],
+  "endpoint2": [
+    {
+      "id": 1,
+      "key": "value"
+    },
+    ...
+  ]
+}
+````
+
+Bijvoorbeeld voor de `staff.json` file:
+
+```json
+{
+  "staff": [
+    {
+      "id": 0,
+      "name": "Andie Similon",
+      "age": 39,
+      "city": "Edegem"
+    },   
+    {
+      "id": 1,
+      "name": "Hans Verbeeck",
+      "age": 32,
+      "city": "Antwerp"
+    },
+    {
+      "id": 2,
+      "name": "Jon Beton",
+      "age": 22,
+      "city": "Veurne"
+    }
+  ]
+}
+```
+
+Vervolgens kan je JSON server starten met het volgende commando:
+
+```bash
+json-server staff.json
 ```

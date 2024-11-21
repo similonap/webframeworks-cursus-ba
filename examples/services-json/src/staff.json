@@ -1,0 +1,22 @@
+{
+"staff": [
+    {
+        "id": 0,
+        "name": "Andie Similon",
+        "age": 39,
+        "city": "Edegem"
+    },   
+    {
+        "id": 1,
+        "name": "Hans Verbeeck",
+        "age": 32,
+        "city": "Antwerp"
+    },
+    {
+        "id": 2,
+        "name": "Jon Beton",
+        "age": 22,
+        "city": "Veurne"
+    }
+]
+}
