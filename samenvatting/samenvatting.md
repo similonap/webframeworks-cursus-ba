@@ -968,3 +968,48 @@ async ngOnInit() {
   // doe iets met de data
 }
 ```
+
+## PUT, POST en DELETE requests
+
+Als je data wilt toevoegen of updaten in een API, kan je een PUT of POST request maken met de `HttpClient` module.
+
+Om data toe te voegen, kan je een POST request maken:
+
+```typescript
+async addStaff(staff: Staff) {
+  await firstValueFrom(this.client.post<Staff>("http://localhost:3000/staff", staff));
+}
+```
+
+eventueel kan je na de post request de data opnieuw ophalen:
+
+```typescript
+async getStaff() {
+  this.staff = await firstValueFrom(this.client.get<Staff[]>("http://localhost:3000/staff"));
+}
+```
+
+```typescript
+async addStaff(staff: Staff) {
+  await firstValueFrom(this.client.post<Staff>("http://localhost:3000/staff", staff));
+  await this.getStaff();
+}
+```
+
+Met een PUT request kan je data updaten:
+
+```typescript
+async updateStaff(staff: Staff) {
+  await firstValueFrom(this.client.put<Staff>(`http://localhost:3000/staff/${staff.id}`, staff));
+  await this.getStaff();
+}
+```
+
+Een delete request kan je maken met de `delete` methode:
+
+```typescript
+async deleteStaff(id: number) {
+  await firstValueFrom(this.client.delete(`http://localhost:3000/staff/${id}`));
+  await this.getStaff();
+}
+```
