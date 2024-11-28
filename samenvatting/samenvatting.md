@@ -1013,3 +1013,13 @@ async deleteStaff(id: number) {
   await this.getStaff();
 }
 ```
+
+Uiteraard kan je hier ook de subscribe methode gebruiken in plaats van `firstValueFrom`.
+
+```typescript
+deleteStaff(id: number) {
+  this.client.delete(`http://localhost:3000/staff/${id}`).subscribe(() => {
+    this.getStaff();
+  });
+}
+```
