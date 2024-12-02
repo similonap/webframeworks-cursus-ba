@@ -30,7 +30,7 @@ Maak een functie om (bekijk ook het gecompileerde resultaat in javascript):&#x20
   * Een bestelNummer : number
 * De **checksum** kan je berekenen door alle getallen aan elkaar te concateneren en dan modulo 97 te berekenen.
   * _017/0123/001**36**_\
-    _170123001 % 97 = **36**_
+    &#xNAN;_&#x31;70123001 % 97 = **36**_
 * Breid deze functie uit zodat de 3 parameters optioneel worden
   * Gebruik de waarde 0 indien niet opgegeven
 * Breid deze functie uit met 2 default parameters
