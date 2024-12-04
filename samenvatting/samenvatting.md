@@ -1,4 +1,4 @@
-# Samenva§tting
+# Samenvatting
 
 ## Project opzetten
 
@@ -1023,3 +1023,152 @@ deleteStaff(id: number) {
   });
 }
 ```
+
+## NestJS
+
+NestJS is een framework voor het bouwen van een REST API met Node.js. Om nestJS te installeren, kan je het volgende commando uitvoeren in je terminal:
+
+```bash
+npm install -g @nestjs/cli
+```
+
+Om een nieuw nestJS project aan te maken, kan je het volgende commando uitvoeren in je terminal:
+
+```bash
+nest new project-naam
+```
+
+Dit commando zal een nieuw nestJS project aanmaken met de naam `project-naam`. Je kan dan een nieuwe controller aanmaken met het volgende commando:
+
+```bash
+nest generate controller staff
+```
+
+Je kan dan de controller gebruiken om een REST API te bouwen. Hier een voorbeeld van een controller:
+
+```typescript
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Staff } from 'src/types';
+
+@Controller('staff')
+export class StaffController {
+  staff: Staff[] = [
+    {
+      "id": 0,
+      "name": "Andie Similon",
+      "age": 39,
+      "city": "Edegem"
+    },   
+    {
+      "id": 1,
+      "name": "Hans Verbeeck",
+      "age": 32,
+      "city": "Antwerp"
+    },
+    {
+      "id": 2,
+      "name": "Jon Beton",
+      "age": 22,
+      "city": "Veurne"
+    }
+  ]
+
+
+  constructor() {
+
+  }
+
+  @Get()
+  getAll() {
+    return this.staff;
+  }
+}
+```
+
+Zorg dat je ook in dit project een `types.ts` bestand hebt met de interface `Staff`. 
+
+Je kan ook de staff array in een json bestand zetten en deze inlezen in de controller:
+
+```typescript
+import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import * as staffJSON from "../staff.json";
+
+@Controller('staff')
+export class StaffController {
+  staff: Staff[] = staffJSON;
+
+  constructor() {
+
+  }
+
+  @Get()
+  getAll() {
+    return this.staff;
+  }
+}
+```
+
+Vergeet wel niet in `tsconfig.json` het volgende toe te voegen:
+
+```json
+"resolveJsonModule": true,
+```
+
+Als je nu de nest server start met het volgende commando:
+
+```bash
+npm run start:dev
+```
+
+kan je de data ophalen via de url `http://localhost:3000/staff`. 
+
+### GET request met parameters
+
+Als je data wilt ophalen met parameters, kan je deze parameters toevoegen aan de url. Bijvoorbeeld als je data wilt ophalen met een bepaalde id, kan je de id toevoegen aan de url:
+
+```typescript
+@Get(':id')
+getById(@Param('id') id: string) {
+  return this.staff.find(staff => staff.id === parseInt(id));
+}
+```
+
+Je kan dan de data ophalen via de url `http://localhost:3000/staff/1`.
+
+### POST request
+
+Om data toe te voegen, kan je een POST request maken:
+
+```typescript
+@Post()
+addStaff(@Body() staff: Staff) {
+  this.staff.push(staff);
+  return staff;
+}
+```
+
+### PUT request
+
+Om data te updaten, kan je een PUT request maken:
+
+```typescript
+@Put(':id')
+updateStaff(@Param('id') id: string, @Body() staff: Staff) {
+  const index = this.staff.findIndex(staff => staff.id === parseInt(id));
+  this.staff[index] = staff;
+  return staff;
+}
+```
+
+### DELETE request
+
+Om data te verwijderen, kan je een DELETE request maken:
+
+```typescript
+@Delete(':id')
+deleteStaff(@Param('id') id: string) {
+  this.staff = this.staff.filter(staff => staff.id !== parseInt(id));
+  return this.staff;
+}
+```
+
